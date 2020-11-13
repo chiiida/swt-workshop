@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.8.6 on darwin)" generated="20201106 17:29:03.762" rpa="false">
+<suite id="s1" name="Facebook" source="/Users/chida/Documents/school/softvv/swt-workshop/ui-test/google/facebook.robot">
+<test id="s1-t1" name="Test login and post status on Facebook">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver.chrome.options'].Options()</arg>
+<arg>sys</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20201106 17:29:04.167" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x10c80d220&gt;</msg>
+<status status="PASS" starttime="20201106 17:29:04.167" endtime="20201106 17:29:04.167"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-notifications</arg>
+</arguments>
+<status status="PASS" starttime="20201106 17:29:04.167" endtime="20201106 17:29:04.168"></status>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>${BROWSER}</arg>
+<arg>options=${options}</arg>
+</arguments>
+<assign>
+<var>${driver}</var>
+</assign>
+<msg timestamp="20201106 17:29:04.168" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20201106 17:29:06.428" level="INFO">${driver} = 1</msg>
+<status status="PASS" starttime="20201106 17:29:04.168" endtime="20201106 17:29:06.428"></status>
+</kw>
+<kw name="type facebook.com">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+</arguments>
+<msg timestamp="20201106 17:29:06.430" level="INFO">Opening url 'https://www.facebook.com'</msg>
+<status status="PASS" starttime="20201106 17:29:06.429" endtime="20201106 17:29:07.897"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:06.428" endtime="20201106 17:29:07.898"></status>
+</kw>
+<kw name="login">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:email</arg>
+<arg>${EMAIL}</arg>
+</arguments>
+<msg timestamp="20201106 17:29:07.900" level="INFO">Typing text 'eyepeepers@hotmail.com' into text field 'name:email'.</msg>
+<status status="PASS" starttime="20201106 17:29:07.899" endtime="20201106 17:29:08.053"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:pass</arg>
+<arg>${PASS}</arg>
+</arguments>
+<msg timestamp="20201106 17:29:08.053" level="INFO">Typing text '@28siska' into text field 'name:pass'.</msg>
+<status status="PASS" starttime="20201106 17:29:08.053" endtime="20201106 17:29:08.167"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>name:login</arg>
+</arguments>
+<msg timestamp="20201106 17:29:08.167" level="INFO">Clicking element 'name:login'.</msg>
+<status status="PASS" starttime="20201106 17:29:08.167" endtime="20201106 17:29:08.239"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:07.898" endtime="20201106 17:29:08.239"></status>
+</kw>
+<kw name="verify Facebook Name">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>${EXPECTED_NAME}</arg>
+</arguments>
+<msg timestamp="20201106 17:29:15.209" level="INFO">Current page contains text 'Eye Chananchida'.</msg>
+<status status="PASS" starttime="20201106 17:29:08.240" endtime="20201106 17:29:15.209"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:08.240" endtime="20201106 17:29:15.209"></status>
+</kw>
+<kw name="type post message">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>name:xhpc_message</arg>
+<arg>${POST_TEXT}</arg>
+</arguments>
+<msg timestamp="20201106 17:29:15.211" level="INFO">Typing text 'Hello from Robotframework' into text field 'name:xhpc_message'.</msg>
+<status status="PASS" starttime="20201106 17:29:15.210" endtime="20201106 17:29:16.674"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:15.210" endtime="20201106 17:29:16.674"></status>
+</kw>
+<kw name="press Post">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<arguments>
+<arg>xpath://button[@type="submit"]/span[.="Post"]</arg>
+</arguments>
+<status status="PASS" starttime="20201106 17:29:16.675" endtime="20201106 17:29:18.329"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://button[@type="submit"]/span[.="Post"]</arg>
+</arguments>
+<msg timestamp="20201106 17:29:18.329" level="INFO">Clicking element 'xpath://button[@type="submit"]/span[.="Post"]'.</msg>
+<status status="PASS" starttime="20201106 17:29:18.329" endtime="20201106 17:29:18.483"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:16.674" endtime="20201106 17:29:18.484"></status>
+</kw>
+<status status="PASS" starttime="20201106 17:29:04.166" endtime="20201106 17:29:18.484" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20201106 17:29:03.763" endtime="20201106 17:29:18.485"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Facebook">Facebook</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

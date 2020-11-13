@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.8.6 on darwin)" generated="20201113 10:37:26.381" rpa="false">
+<suite id="s1" name="Shopping Visa Success" source="/Users/chida/Documents/school/softvv/swt-workshop/ui-test/shopping_cart/shopping_visa_success.robot">
+<test id="s1-t1" name="User purchase item select Kerry as shipping method and pay with Visa card and success">
+<kw name="show products">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20201113 10:37:26.573" level="INFO">Opening browser 'chrome' to base url 'https://dminer.in.th/Product-list.html?'.</msg>
+<status status="PASS" starttime="20201113 10:37:26.572" endtime="20201113 10:37:29.258"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:productName-1</arg>
+<arg>43 Piece Dinner Set</arg>
+</arguments>
+<msg timestamp="20201113 10:37:29.282" level="INFO">Element 'id:productName-1' contains text '43 Piece Dinner Set'.</msg>
+<status status="PASS" starttime="20201113 10:37:29.258" endtime="20201113 10:37:29.283"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:productPrice-1</arg>
+<arg>12.95 USD</arg>
+</arguments>
+<msg timestamp="20201113 10:37:29.304" level="INFO">Element 'id:productPrice-1' contains text '12.95 USD'.</msg>
+<status status="PASS" starttime="20201113 10:37:29.283" endtime="20201113 10:37:29.304"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:26.572" endtime="20201113 10:37:29.304"></status>
+</kw>
+<kw name="show products detail">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:viewMore-1</arg>
+</arguments>
+<msg timestamp="20201113 10:37:29.306" level="INFO">Clicking button 'id:viewMore-1'.</msg>
+<status status="PASS" starttime="20201113 10:37:29.305" endtime="20201113 10:37:29.360"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:productName</arg>
+<arg>43 Piece dinner Set</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:29.360" endtime="20201113 10:37:29.588"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:productBrand</arg>
+<arg>CoolKidz</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:29.588" endtime="20201113 10:37:29.605"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:productGender</arg>
+<arg>UNISEX</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:29.605" endtime="20201113 10:37:29.620"></status>
+</kw>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:productPrice</arg>
+<arg>12.95 USD</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:29.620" endtime="20201113 10:37:29.636"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:29.305" endtime="20201113 10:37:29.636"></status>
+</kw>
+<kw name="specify qunity of product that going to buy">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:productQuantity</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20201113 10:37:29.637" level="INFO">Typing text '1' into text field 'id:productQuantity'.</msg>
+<status status="PASS" starttime="20201113 10:37:29.637" endtime="20201113 10:37:29.735"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:29.637" endtime="20201113 10:37:29.735"></status>
+</kw>
+<kw name="add product to cart">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:addToCart</arg>
+</arguments>
+<msg timestamp="20201113 10:37:29.736" level="INFO">Clicking button 'id:addToCart'.</msg>
+<status status="PASS" starttime="20201113 10:37:29.736" endtime="20201113 10:37:29.792"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:29.735" endtime="20201113 10:37:29.793"></status>
+</kw>
+<kw name="comfirm order">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:receiverName</arg>
+<arg>ณัฐญา ชุติบุตร</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:29.793" endtime="20201113 10:37:30.026"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:recevierAddress</arg>
+<arg>405/37 ถ.มหิดล ต.ท่าศาลา อ.เมือง จ.เชียงใหม่ 50000</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.044" level="INFO">Element 'id:recevierAddress' contains text '405/37 ถ.มหิดล ต.ท่าศาลา อ.เมือง จ.เชียงใหม่ 50000'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.026" endtime="20201113 10:37:30.044"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:recevierPhonenumber</arg>
+<arg>0970809292</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.059" level="INFO">Element 'id:recevierPhonenumber' contains text '0970809292'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.044" endtime="20201113 10:37:30.060"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:totalShippingCharge</arg>
+<arg>2.00 USD</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.079" level="INFO">Element 'id:totalShippingCharge' contains text '2.00 USD'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.060" endtime="20201113 10:37:30.079"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>id:totalAmount</arg>
+<arg>14.95 USD</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.095" level="INFO">Element 'id:totalAmount' contains text '14.95 USD'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.079" endtime="20201113 10:37:30.095"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>id:confirmPayment</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:30.095" endtime="20201113 10:37:30.102"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:confirmPayment</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.102" level="INFO">Clicking button 'id:confirmPayment'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.102" endtime="20201113 10:37:30.141"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:29.793" endtime="20201113 10:37:30.141"></status>
+</kw>
+<kw name="pay with Visa card">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>id:cardNumber</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:30.142" endtime="20201113 10:37:30.357"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:cardNumber</arg>
+<arg>1234567812345678</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.357" level="INFO">Typing text '1234567812345678' into text field 'id:cardNumber'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.357" endtime="20201113 10:37:30.449"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:expiredMonth</arg>
+<arg>11</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.449" level="INFO">Typing text '11' into text field 'id:expiredMonth'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.449" endtime="20201113 10:37:30.511"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:expiredYear</arg>
+<arg>22</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.512" level="INFO">Typing text '22' into text field 'id:expiredYear'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.511" endtime="20201113 10:37:30.572"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:cvv</arg>
+<arg>288</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.573" level="INFO">Typing text '288' into text field 'id:cvv'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.573" endtime="20201113 10:37:30.633"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:cardName</arg>
+<arg>Nong Aui</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.633" level="INFO">Typing text 'Nong Aui' into text field 'id:cardName'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.633" endtime="20201113 10:37:30.706"></status>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>id:Payment</arg>
+</arguments>
+<msg timestamp="20201113 10:37:30.706" level="INFO">Clicking button 'id:Payment'.</msg>
+<status status="PASS" starttime="20201113 10:37:30.706" endtime="20201113 10:37:30.756"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:30.142" endtime="20201113 10:37:30.757"></status>
+</kw>
+<kw name="thank you">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>id:notify</arg>
+<arg>วันเวลาที่ชำระเงิน 1/3/2563 13:30:00 หมายเลขคำสั่งซื้อ 8004359103 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry ด้วยหมายเลข 1785261900</arg>
+</arguments>
+<status status="PASS" starttime="20201113 10:37:30.757" endtime="20201113 10:37:30.986"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:30.757" endtime="20201113 10:37:30.986"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:26.571" endtime="20201113 10:37:30.986" critical="yes"></status>
+</test>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20201113 10:37:30.988" endtime="20201113 10:37:31.069"></status>
+</kw>
+<status status="PASS" starttime="20201113 10:37:26.382" endtime="20201113 10:37:31.069"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Shopping Visa Success">Shopping Visa Success</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

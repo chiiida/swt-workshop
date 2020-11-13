@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.8.6 on darwin)" generated="20201113 12:26:17.836" rpa="false">
+<suite id="s1" name="Shopping Cart" source="/Users/chida/Documents/school/softvv/swt-workshop/api/shopping_cart/shopping_cart.robot">
+<kw name="Create Session" library="RequestsLibrary" type="setup">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>alias=${ALIAS}</arg>
+<arg>url=${URL}</arg>
+</arguments>
+<msg timestamp="20201113 12:26:17.919" level="INFO">Creating Session using : alias=shopping, url=https://dminer.in.th, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20201113 12:26:17.918" endtime="20201113 12:26:17.919"></status>
+</kw>
+<test id="s1-t1" name="User purchase item select Kerry as shipping method and pay with Visa card and success">
+<kw name="Search">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>alias=${ALIAS}</arg>
+<arg>uri=/api/v1/product</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.053" level="INFO">GET Request : url=https://dminer.in.th/api/v1/product 
+ path_url=/api/v1/product 
+ headers={'User-Agent': 'python-requests/2.25.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20201113 12:26:18.053" level="INFO">GET Response : url=https://dminer.in.th/api/v1/product 
+ status=200, reason=OK 
+ body={
+  "total": 2,
+  "products": [
+    {
+      "id": 1,
+      "product_name": "Balance Training Bicycle",
+      "product_price": 119.95,
+      "product_image": "/Balance_Training_Bicycle.png"
+    },
+    {
+      "id": 2,
+      "product_name": "43 Piece dinner Set",
+      "product_price": 12.95,
+      "product_image": "/43_Piece_dinner_Set.png"
+    }
+  ]
+} 
+ </msg>
+<msg timestamp="20201113 12:26:18.054" level="INFO">/usr/local/lib/python3.8/site-packages/urllib3/connectionpool.py:981: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dminer.in.th'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20201113 12:26:18.054" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:17.920" endtime="20201113 12:26:18.054"></status>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.054" endtime="20201113 12:26:18.054"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${resp.json()['products'][1]['product_name']}</arg>
+<arg>43 Piece dinner Set</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.055" endtime="20201113 12:26:18.055"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>${resp.json()['products'][1]['product_price']}</arg>
+<arg>12.95</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.056" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.056" endtime="20201113 12:26:18.057"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${resp.json()['total']}</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.058" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.057" endtime="20201113 12:26:18.058"></status>
+</kw>
+<status status="PASS" starttime="20201113 12:26:17.920" endtime="20201113 12:26:18.058"></status>
+</kw>
+<kw name="Product Detail">
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>alias=${ALIAS}</arg>
+<arg>uri=/api/v1/product/2</arg>
+<arg>headers=&amp;{HEADER}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.105" level="INFO">GET Request : url=https://dminer.in.th/api/v1/product/2 
+ path_url=/api/v1/product/2 
+ headers={'User-Agent': 'python-requests/2.25.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20201113 12:26:18.106" level="INFO">GET Response : url=https://dminer.in.th/api/v1/product/2 
+ status=200, reason=OK 
+ body={
+  "id": 2,
+  "product_name": "43 Piece dinner Set",
+  "product_price": 12.95,
+  "product_image": "/43_Piece_dinner_Set.png",
+  "quantity": 10,
+  "product_brand": "CoolKidz"
+} 
+ </msg>
+<msg timestamp="20201113 12:26:18.106" level="INFO">/usr/local/lib/python3.8/site-packages/urllib3/connectionpool.py:981: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dminer.in.th'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20201113 12:26:18.106" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.059" endtime="20201113 12:26:18.106"></status>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.106" endtime="20201113 12:26:18.107"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${resp.json()['product_name']}</arg>
+<arg>43 Piece dinner Set</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.107" endtime="20201113 12:26:18.107"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>${resp.json()['product_price']}</arg>
+<arg>12.95</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.108" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.107" endtime="20201113 12:26:18.108"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${resp.json()['product_brand']}</arg>
+<arg>CoolKidz</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.108" endtime="20201113 12:26:18.109"></status>
+</kw>
+<status status="PASS" starttime="20201113 12:26:18.058" endtime="20201113 12:26:18.109"></status>
+</kw>
+<kw name="Sumbit Order">
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>{"cart" : [{ "product_id": 2,"quantity": 1}],"shipping_method" : "Kerry","shipping_address" : "405/37 ถ.มหิดล","shipping_sub_district" : "ต.ท่าศาลา","shipping_district" : "อ.เมือง","shipping_province" : "จ.เชียงใหม่","shipping_zip_code" : "50000","recipient_name" : "ณัฐญา ชุติบุตร","recipient_phone_number" : "0970809292"}</arg>
+</arguments>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.110" level="INFO">To JSON using : content={"cart" : [{ "product_id": 2,"quantity": 1}],"shipping_method" : "Kerry","shipping_address" : "405/37 ถ.มหิดล","shipping_sub_district" : "ต.ท่าศาลา","shipping_district" : "อ.เมือง","shipping_province" : "จ.เชียงใหม่","shipping_zip_code" : "50000","recipient_name" : "ณัฐญา ชุติบุตร","recipient_phone_number" : "0970809292"} </msg>
+<msg timestamp="20201113 12:26:18.110" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20201113 12:26:18.110" level="INFO">${data} = {'cart': [{'product_id': 2, 'quantity': 1}], 'shipping_method': 'Kerry', 'shipping_address': '405/37 ถ.มหิดล', 'shipping_sub_district': 'ต.ท่าศาลา', 'shipping_district': 'อ.เมือง', 'shipping_province'...</msg>
+<status status="PASS" starttime="20201113 12:26:18.110" endtime="20201113 12:26:18.110"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>alias=${ALIAS}</arg>
+<arg>uri=/api/v1/order</arg>
+<arg>json=${data}</arg>
+<arg>headers=&amp;{HEADER}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.164" level="INFO">POST Request : url=https://dminer.in.th/api/v1/order 
+ path_url=/api/v1/order 
+ headers={'User-Agent': 'python-requests/2.25.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '537'} 
+ body=b'{"cart": [{"product_id": 2, "quantity": 1}], "shipping_method": "Kerry", "shipping_address": "405/37 \\u0e16.\\u0e21\\u0e2b\\u0e34\\u0e14\\u0e25", "shipping_sub_district": "\\u0e15.\\u0e17\\u0e48\\u0e32\\u0e28\\u0e32\\u0e25\\u0e32", "shipping_district": "\\u0e2d.\\u0e40\\u0e21\\u0e37\\u0e2d\\u0e07", "shipping_province": "\\u0e08.\\u0e40\\u0e0a\\u0e35\\u0e22\\u0e07\\u0e43\\u0e2b\\u0e21\\u0e48", "shipping_zip_code": "50000", "recipient_name": "\\u0e13\\u0e31\\u0e10\\u0e0d\\u0e32 \\u0e0a\\u0e38\\u0e15\\u0e34\\u0e1a\\u0e38\\u0e15\\u0e23", "recipient_phone_number": "0970809292"}' 
+ </msg>
+<msg timestamp="20201113 12:26:18.164" level="INFO">POST Response : url=https://dminer.in.th/api/v1/order 
+ status=200, reason=OK 
+ body={
+    "order_id": 8004359122,
+    "total_price": 14.95
+} 
+ </msg>
+<msg timestamp="20201113 12:26:18.165" level="INFO">/usr/local/lib/python3.8/site-packages/urllib3/connectionpool.py:981: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dminer.in.th'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20201113 12:26:18.165" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.110" endtime="20201113 12:26:18.165"></status>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.165" endtime="20201113 12:26:18.166"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>${resp.json()['order_id']}</arg>
+<arg>8004359122</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.167" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.166" endtime="20201113 12:26:18.167"></status>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<arguments>
+<arg>${resp.json()['total_price']}</arg>
+<arg>14.95</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.168" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.167" endtime="20201113 12:26:18.168"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()['order_id']}</arg>
+</arguments>
+<assign>
+<var>${order_id}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.169" level="INFO">${order_id} = 8004359122</msg>
+<status status="PASS" starttime="20201113 12:26:18.168" endtime="20201113 12:26:18.169"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${order_id}</arg>
+</arguments>
+<msg timestamp="20201113 12:26:18.170" level="INFO">${order_id} = 8004359122</msg>
+<status status="PASS" starttime="20201113 12:26:18.169" endtime="20201113 12:26:18.170"></status>
+</kw>
+<status status="PASS" starttime="20201113 12:26:18.109" endtime="20201113 12:26:18.170"></status>
+</kw>
+<kw name="Confirm Payment">
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>{"order_id" : ${order_id},"payment_type" : "credit","type" : "visa","card_number" : "4719700591590995","cvv" : "752","expired_month" : 7,"expired_year" : 20,"card_name" : "Karnwat Wongudom","total_price" : 14.95}</arg>
+</arguments>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.171" level="INFO">To JSON using : content={"order_id" : 8004359122,"payment_type" : "credit","type" : "visa","card_number" : "4719700591590995","cvv" : "752","expired_month" : 7,"expired_year" : 20,"card_name" : "Karnwat Wongudom","total_price" : 14.95} </msg>
+<msg timestamp="20201113 12:26:18.171" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20201113 12:26:18.171" level="INFO">${data} = {'order_id': 8004359122, 'payment_type': 'credit', 'type': 'visa', 'card_number': '4719700591590995', 'cvv': '752', 'expired_month': 7, 'expired_year': 20, 'card_name': 'Karnwat Wongudom', 'total_pric...</msg>
+<status status="PASS" starttime="20201113 12:26:18.170" endtime="20201113 12:26:18.171"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>alias=${ALIAS}</arg>
+<arg>uri=/api/v1/confirmPayment</arg>
+<arg>json=${data}</arg>
+<arg>headers=&amp;{HEADER}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20201113 12:26:18.238" level="INFO">POST Request : url=https://dminer.in.th/api/v1/confirmPayment 
+ path_url=/api/v1/confirmPayment 
+ headers={'User-Agent': 'python-requests/2.25.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '210'} 
+ body=b'{"order_id": 8004359122, "payment_type": "credit", "type": "visa", "card_number": "4719700591590995", "cvv": "752", "expired_month": 7, "expired_year": 20, "card_name": "Karnwat Wongudom", "total_price": 14.95}' 
+ </msg>
+<msg timestamp="20201113 12:26:18.238" level="INFO">POST Response : url=https://dminer.in.th/api/v1/confirmPayment 
+ status=200, reason=OK 
+ body={
+    "notify_message": "วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359122 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900"
+} 
+ </msg>
+<msg timestamp="20201113 12:26:18.239" level="INFO">/usr/local/lib/python3.8/site-packages/urllib3/connectionpool.py:981: InsecureRequestWarning: Unverified HTTPS request is being made to host 'dminer.in.th'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20201113 12:26:18.239" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20201113 12:26:18.171" endtime="20201113 12:26:18.239"></status>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.239" endtime="20201113 12:26:18.240"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${resp.json()['notify_message']}</arg>
+<arg>วันเวลาที่ชำระเงิน 1/3/2020 13:30:00 หมายเลขคำสั่งซื้อ 8004359122 คุณสามารถติดตามสินค้าผ่านช่องทาง Kerry หมายเลข 1785261900</arg>
+</arguments>
+<status status="PASS" starttime="20201113 12:26:18.240" endtime="20201113 12:26:18.241"></status>
+</kw>
+<status status="PASS" starttime="20201113 12:26:18.170" endtime="20201113 12:26:18.241"></status>
+</kw>
+<status status="PASS" starttime="20201113 12:26:17.919" endtime="20201113 12:26:18.241" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20201113 12:26:17.838" endtime="20201113 12:26:18.242"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Shopping Cart">Shopping Cart</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
